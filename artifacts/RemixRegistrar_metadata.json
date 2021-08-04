@@ -1,0 +1,109 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "contract ENS",
+						"name": "ensAddr",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "node",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "label",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "register",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"constructor": {
+					"params": {
+						"ensAddr": "The address of the ENS registry.",
+						"node": "The node that this registrar administers."
+					}
+				},
+				"register(bytes32,address)": {
+					"params": {
+						"label": "The hash of the label to register.",
+						"owner": "The address of the new owner."
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"constructor": {
+					"notice": "Constructor."
+				},
+				"register(bytes32,address)": {
+					"notice": "Register a name, or change the owner of an existing registration."
+				}
+			},
+			"notice": "A registrar that allocates subdomains to the first person to claim them.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"RemixRegistrar.sol": "RemixRegistrar"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"ENS.sol": {
+			"keccak256": "0x19775de9e6bf2ab5c59311d0f5316ac25dd207dc83733b658d4cc27fb8470f27",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6d8c4b1307235db1ba42e5f4c5f513d2fee30d36a2c26fbccec56fa209d0767e",
+				"dweb:/ipfs/Qmb6wJVGpC697zAdQrVWusDPG6ByYRFx8Gwih8y29h4cBX"
+			]
+		},
+		"RemixRegistrar.sol": {
+			"keccak256": "0x8db5408022cd6ff512e02a8030d2e3ac4ee4c3ae8d11a65e4200330972f386f9",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7cc74433a3dcdee8c84d0d1f944d7de5b71b538e73a08f4ffac8d1f85857d88f",
+				"dweb:/ipfs/QmQCxNh7eG9XmidcS78qXnqQXmvEpq7fhpkkghyxTx7TBg"
+			]
+		}
+	},
+	"version": 1
+}
