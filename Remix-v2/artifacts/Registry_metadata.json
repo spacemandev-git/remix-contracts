@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.6+commit.11564f7e"
+		"version": "0.8.4+commit.c7e474f2"
 	},
 	"language": "Solidity",
 	"output": {
@@ -9,6 +9,30 @@
 				"inputs": [],
 				"stateMutability": "nonpayable",
 				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "s1",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "s2",
+						"type": "string"
+					}
+				],
+				"name": "compareStrings",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
 			},
 			{
 				"inputs": [
@@ -35,14 +59,195 @@
 						"internalType": "bytes",
 						"name": "name",
 						"type": "bytes"
+					}
+				],
+				"name": "registerSystem",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "name",
+						"type": "bytes"
 					},
+					{
+						"internalType": "address",
+						"name": "pubAddress",
+						"type": "address"
+					}
+				],
+				"name": "registerTheme",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "name",
+						"type": "bytes"
+					}
+				],
+				"name": "resolveNamehashType",
+				"outputs": [
 					{
 						"internalType": "string",
 						"name": "",
 						"type": "string"
 					}
 				],
-				"name": "registerNamehash",
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "name",
+						"type": "bytes"
+					}
+				],
+				"name": "resolveNodeNamehash",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "id",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "nftcontract",
+								"type": "address"
+							}
+						],
+						"internalType": "struct Registry.NodeRecord",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "name",
+						"type": "bytes"
+					}
+				],
+				"name": "resolveSystemNamehash",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "locationNFTContract",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "questNFTContract",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "regionsNFTContract",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "charactersNFTContract",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "itemsNFTContract",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "loreNFTContract",
+								"type": "address"
+							}
+						],
+						"internalType": "struct Registry.SystemRecord",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "name",
+						"type": "bytes"
+					}
+				],
+				"name": "resolveThemeNamehash",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "publisher",
+								"type": "address"
+							}
+						],
+						"internalType": "struct Registry.ThemeRecord",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "name",
+						"type": "bytes"
+					},
+					{
+						"internalType": "string",
+						"name": "contractType",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "contractAddress",
+						"type": "address"
+					}
+				],
+				"name": "updateSystem",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "name",
+						"type": "bytes"
+					},
+					{
+						"internalType": "address",
+						"name": "pubAddress",
+						"type": "address"
+					}
+				],
+				"name": "updateTheme",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -63,7 +268,7 @@
 		"compilationTarget": {
 			"Remix-v2/Registry.sol": "Registry"
 		},
-		"evmVersion": "berlin",
+		"evmVersion": "istanbul",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -76,18 +281,18 @@
 	},
 	"sources": {
 		"Remix-v2/ENSNamehash.sol": {
-			"keccak256": "0x5e1f76c15eae7a14a2245870a8b6a72bca022637fa4d2d1513a16f200481bb6b",
+			"keccak256": "0x47e72a47d3bf4b25994347c556c541bca289c83a80e08bf3c0d28eff82dd4205",
 			"urls": [
-				"bzz-raw://4d9d1ea892b46d91ad0f7fca02829a299034c2cdee9dedcfc1d173e4b42cb45f",
-				"dweb:/ipfs/Qmb6UDeuK8uFr62UC3JEGPU3cwda7pVRQiij66cFHvsL8j"
+				"bzz-raw://ecc730bab8818f3fd15cd0b5a8403043d0218a9dc662923533d9ecefa30d20d9",
+				"dweb:/ipfs/QmVhzJuSo7BatHhdQmxnVhxxLqzMzp4yspW7pqnuhWGuBx"
 			]
 		},
 		"Remix-v2/Registry.sol": {
-			"keccak256": "0x54b253e24e0efb71a58c10e436123ab14ed5c88d6b5acdf37a50cf53e602cffe",
+			"keccak256": "0x07fa8412f16c2fa6a1e98b10eb7519b2b19493ac89fdf8e494cf85a40cd2d20c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7f1bb1a78bdc6b58c6f9510ffb25e6b51afe50b79d499d921ee47e41b9b20c7c",
-				"dweb:/ipfs/QmbiunbPTphw7aXAyFHj5hMeXivuyeHUxEEXTpoqapcSsk"
+				"bzz-raw://13a084e102e0211d2fa2e4a9eb13f668b93438c984fcb07b3ba3d68e5ba14eda",
+				"dweb:/ipfs/QmWZe1uqsBbeM1jFxMQW32qcAT6vhRKWAmwQgHgDELF7Zt"
 			]
 		}
 	},

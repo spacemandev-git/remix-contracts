@@ -42,30 +42,34 @@ contract Registry {
     
     function updateSystem(bytes memory name, string memory contractType, address contractAddress) public {
         bytes32 nh = name.namehash();
-        if(contractType == "location"){
-          systemRecords[nh]['locationNFTContract'] = contractAddress;
+        if(compareStrings(contractType, "location")){
+            systemRecords[nh].locationNFTContract = contractAddress;
         }
     }
     
-    function resolveNamehash(bytes memory name) public {
-      bytes32 nh = name.namehash();
-      string memory nType = namehashToType[nh];
-
-      if(nType == "system"){
-        return systemRecords[nh];
-      } else if (nType == "theme") {
-        return themeRecords[nh];
-      } else if (nType == "node"){
+    function compareStrings(string memory s1, string memory s2) public pure returns (bool) {
+        return keccak256(abi.encodePacked((s1))) == keccak256(abi.encodePacked((s2)));
+    }
+    
+    function resolveSystemNamehash(bytes memory name) public view returns (SystemRecord memory) {
+        bytes32 nh = name.namehash();
+        return systemRecords[nh];  
+    }
+    
+    function resolveThemeNamehash(bytes memory name) public view returns (ThemeRecord memory) {
+        bytes32 nh = name.namehash();
+        return themeRecords[nh];  
+    }
+    
+    function resolveNodeNamehash(bytes memory name) public view returns (NodeRecord memory) {
+        bytes32 nh = name.namehash();
         return nodeRecords[nh];
-      }
-    } 
+    }
 
     function registerTheme(bytes memory name, address pubAddress) public {
       bytes32 nh = name.namehash();
       namehashToType[nh] = "theme";
-      themeRecords[nh] = new ThemeRecord({
-        publisher : pubAddress
-      });
+      themeRecords[nh] = ThemeRecord(pubAddress);
     }
 
     function updateTheme(bytes memory name, address pubAddress) public {
