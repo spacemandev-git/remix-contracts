@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.4+commit.c7e474f2"
+		"version": "0.8.6+commit.11564f7e"
 	},
 	"language": "Solidity",
 	"output": {
@@ -499,21 +499,21 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"RemixRegistry.sol": "ENSRegistry"
+			"OLD/RemixRegistry.sol": "ENSRegistry"
 		},
-		"evmVersion": "istanbul",
+		"evmVersion": "berlin",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": true,
+			"enabled": false,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"ENS.sol": {
+		"OLD/ENS.sol": {
 			"keccak256": "0x19775de9e6bf2ab5c59311d0f5316ac25dd207dc83733b658d4cc27fb8470f27",
 			"license": "MIT",
 			"urls": [
@@ -521,7 +521,7 @@
 				"dweb:/ipfs/Qmb6wJVGpC697zAdQrVWusDPG6ByYRFx8Gwih8y29h4cBX"
 			]
 		},
-		"RemixRegistry.sol": {
+		"OLD/RemixRegistry.sol": {
 			"keccak256": "0x5becd60dce3cadd708ea08979acdbaf3b332d5cf43e390fab87d641b8ce1f38b",
 			"license": "MIT",
 			"urls": [

@@ -1,0 +1,95 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "name",
+						"type": "bytes"
+					}
+				],
+				"name": "getNamehash",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "name",
+						"type": "bytes"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "registerNamehash",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Remix-v2/Registry.sol": "Registry"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Remix-v2/ENSNamehash.sol": {
+			"keccak256": "0x5e1f76c15eae7a14a2245870a8b6a72bca022637fa4d2d1513a16f200481bb6b",
+			"urls": [
+				"bzz-raw://4d9d1ea892b46d91ad0f7fca02829a299034c2cdee9dedcfc1d173e4b42cb45f",
+				"dweb:/ipfs/Qmb6UDeuK8uFr62UC3JEGPU3cwda7pVRQiij66cFHvsL8j"
+			]
+		},
+		"Remix-v2/Registry.sol": {
+			"keccak256": "0x54b253e24e0efb71a58c10e436123ab14ed5c88d6b5acdf37a50cf53e602cffe",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7f1bb1a78bdc6b58c6f9510ffb25e6b51afe50b79d499d921ee47e41b9b20c7c",
+				"dweb:/ipfs/QmbiunbPTphw7aXAyFHj5hMeXivuyeHUxEEXTpoqapcSsk"
+			]
+		}
+	},
+	"version": 1
+}

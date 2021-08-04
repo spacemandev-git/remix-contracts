@@ -1,0 +1,44 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Remix-v2/System.sol": "System"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Remix-v2/System.sol": {
+			"keccak256": "0x7f3a238a906fd171df70fb0e728e9b085edf4535bd330a63add58df5969ed2a0",
+			"urls": [
+				"bzz-raw://060a127f26b867ba8fbaaa34af62fe26f85146a7b0c5d73d0630d3e10fad07c9",
+				"dweb:/ipfs/QmbLNsorZW2bNHKRYtXqb4HFcAxa1pXrcJV2ELJgYVFDL9"
+			]
+		}
+	},
+	"version": 1
+}

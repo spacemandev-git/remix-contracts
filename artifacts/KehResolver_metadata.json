@@ -1,0 +1,223 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "node",
+						"type": "bytes32"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "a",
+						"type": "address"
+					}
+				],
+				"name": "AddrChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "node",
+						"type": "bytes32"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "coinType",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "newAddress",
+						"type": "bytes"
+					}
+				],
+				"name": "AddressChanged",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "node",
+						"type": "bytes32"
+					}
+				],
+				"name": "addr",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "node",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "coinType",
+						"type": "uint256"
+					}
+				],
+				"name": "addr",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "node",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "coinType",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "a",
+						"type": "bytes"
+					}
+				],
+				"name": "setAddr",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "node",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "a",
+						"type": "address"
+					}
+				],
+				"name": "setAddr",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes4",
+						"name": "interfaceID",
+						"type": "bytes4"
+					}
+				],
+				"name": "supportsInterface",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"addr(bytes32)": {
+					"params": {
+						"node": "The ENS node to query."
+					},
+					"returns": {
+						"_0": "The associated address."
+					}
+				},
+				"setAddr(bytes32,address)": {
+					"params": {
+						"a": "The address to set.",
+						"node": "The node to update."
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"addr(bytes32)": {
+					"notice": "Returns the address associated with an ENS node."
+				},
+				"setAddr(bytes32,address)": {
+					"notice": "Sets the address associated with an ENS node. May only be called by the owner of that node in the ENS registry."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"KeyResolver.sol": "KehResolver"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"BaseResolver.sol": {
+			"keccak256": "0x57894c0e914039aa4b9dfb3a1a740232ca7b47e06845d5ebd19c0d7dd82617e6",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c8fca411adfd81ee9dac40a49c11cf651a5aa9d62a6b51fd2b78efba2e0f462b",
+				"dweb:/ipfs/Qma21sQ1h6XXFrziFWUtvQgf7sKhCYvzyPVvZ4qBWCtjhN"
+			]
+		},
+		"KeyResolver.sol": {
+			"keccak256": "0x63aefbc638d3fddac4023b7b0d7e8d391467d25efedb1758a662ea1ef24b6ae5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8a1aa78456204258d2ae4c5d2c3ebe2a37de2be96e1b15f836143dd9c841fb4f",
+				"dweb:/ipfs/QmQAtRNeRsnEvV6LvVuHr2KMRWPwwSWiJmbJ962XHVKkZ8"
+			]
+		}
+	},
+	"version": 1
+}

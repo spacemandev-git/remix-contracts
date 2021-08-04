@@ -8,17 +8,17 @@
 			{
 				"inputs": [
 					{
-						"internalType": "bytes4",
-						"name": "interfaceID",
-						"type": "bytes4"
+						"internalType": "string",
+						"name": "source",
+						"type": "string"
 					}
 				],
-				"name": "supportsInterface",
+				"name": "stringToBytes32",
 				"outputs": [
 					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
+						"internalType": "bytes32",
+						"name": "result",
+						"type": "bytes32"
 					}
 				],
 				"stateMutability": "pure",
@@ -38,7 +38,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"BaseResolver.sol": "BaseResolver"
+			"OLD/DebugFunctions.sol": "DebugFunctions"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -46,18 +46,17 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": true,
+			"enabled": false,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"BaseResolver.sol": {
-			"keccak256": "0x57894c0e914039aa4b9dfb3a1a740232ca7b47e06845d5ebd19c0d7dd82617e6",
-			"license": "MIT",
+		"OLD/DebugFunctions.sol": {
+			"keccak256": "0x18da154e03285299cb99bf2b7493d1cb75d4b49d1c05a60ee7737dbc1c4defcb",
 			"urls": [
-				"bzz-raw://c8fca411adfd81ee9dac40a49c11cf651a5aa9d62a6b51fd2b78efba2e0f462b",
-				"dweb:/ipfs/Qma21sQ1h6XXFrziFWUtvQgf7sKhCYvzyPVvZ4qBWCtjhN"
+				"bzz-raw://1220400e6fd4007382f8eddf685f2a40e42fbe9df1a9c0b296c7f13bfbf7b355",
+				"dweb:/ipfs/QmNy78KSRCN6zTVjZmixDtajAsdRY9hrL15ctL3NF15D6a"
 			]
 		}
 	},
