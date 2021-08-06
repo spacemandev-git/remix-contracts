@@ -29,6 +29,10 @@ contract Registry {
         bytes32[] dependencies;
         uint[] quantities;
     }
+    struct blueprintOwnerDetails {
+        address owner;
+        uint earnings;
+    }
     /*
     struct TokenQuantity {
         bytes32 tokenHash;
@@ -50,7 +54,7 @@ contract Registry {
     mapping(bytes32 => ThemeRecord) themeRecords;
     mapping(address => NFTOwner) nftOwners;
     mapping(bytes32 => NFTData) nftData;
-    mapping(bytes32 => address) blueprintOwners;
+    mapping(bytes32 => blueprintOwnerDetails) blueprintOwners;
     mapping(bytes32 => BlueprintData) blueprintData;
     // mapping(bytes32 => TokenQuantity) 
     // uint [] tokenQuantity;
@@ -65,8 +69,8 @@ contract Registry {
     }
     */
     
-    function getNamehash(bytes memory name) public view returns (bytes32) {
-        return name.namehash();
+    function getNamehash(string memory name) public view returns (bytes32) {
+        return bytes(name).namehash();
     }
     
     function registerSystem(string memory name) public {
@@ -119,23 +123,27 @@ contract Registry {
     }
     */
     
-    function createBlueprint(string memory assetURI, string memory assetname, string memory imageURL, string memory description, uint cost) public {
+    event createdBluprint(address owner, string assetname, uint cost, bytes32[] dependencies);
+    
+    function createBlueprint(string memory assetURI, string memory assetname, string memory imageURL, string memory description, uint cost) public payable {
         bytes32 blueprintTokenId = bytes(assetURI).namehash();
-        require(blueprintOwners[blueprintTokenId] != address(0));
-        blueprintOwners[blueprintTokenId] = msg.sender;
+        // require(blueprintOwners[blueprintTokenId] != address(0x0), "Didn't meet the criteria");
+        blueprintOwners[blueprintTokenId].owner = msg.sender;
         bytes32[] memory tokenHashes;
         uint[] memory quantities; 
         blueprintData[blueprintTokenId] = BlueprintData({assetname: assetname, imageURL: imageURL, description: description, cost: cost, dependencies: tokenHashes, quantities: quantities});
+        emit createdBluprint(blueprintOwners[blueprintTokenId].owner, blueprintData[blueprintTokenId].assetname, blueprintData[blueprintTokenId].cost, blueprintData[blueprintTokenId].dependencies);
     }
     
     function updateBlueprint(string memory assetURI, uint quantity) public {
-        bytes32 assetURInh = bytes(assetURI).namehash();
-        require(msg.sender == blueprintOwners[assetURInh]);
-        blueprintData[assetURInh].dependencies.push(assetURInh);
-        blueprintData[assetURInh].quantities.push(quantity);
+        bytes32 blueprintTokenId = bytes(assetURI).namehash();
+        require(msg.sender == blueprintOwners[blueprintTokenId].owner);
+        blueprintData[blueprintTokenId].dependencies.push(blueprintTokenId);
+        blueprintData[blueprintTokenId].quantities.push(quantity);
+        emit createdBluprint(blueprintOwners[blueprintTokenId].owner, blueprintData[blueprintTokenId].assetname, blueprintData[blueprintTokenId].cost, blueprintData[blueprintTokenId].dependencies);
     }
     
-    function checkDependency(bytes32[] memory dependencies, uint[] memory quantities, address sender, uint value) public view returns (bool) {
+    function checkDependency(bytes32[] memory dependencies, uint[] memory quantities, address sender, uint value) public payable returns (bool) {
         uint numDependencies = dependencies.length;
         uint cost;
         for (uint i=0; i<numDependencies; i++) {
@@ -152,10 +160,21 @@ contract Registry {
         return true;
     }
     
+    event showEarnings(address blueprintOwner, uint earnings);
+    
     function mint(string memory assetURI) public payable {
         bytes32 assetURInh = bytes(assetURI).namehash();
         require(checkDependency(blueprintData[assetURInh].dependencies, blueprintData[assetURInh].quantities, msg.sender, msg.value));
         nftOwners[msg.sender].quantity[assetURInh] += 1;
+        blueprintOwners[assetURInh].earnings += blueprintData[assetURInh].cost;
+        emit showEarnings(blueprintOwners[assetURInh].owner, blueprintOwners[assetURInh].earnings);
+    }
+    
+    event showHoldings(address nftOwner, uint holdings);
+    
+    function showQuantity(string memory assetURI) public {
+        bytes32 assetURInh = bytes(assetURI).namehash();
+        emit showHoldings(msg.sender, nftOwners[msg.sender].quantity[assetURInh]); 
     }
     /*
     function transfer(address _to, uint256 _tokenId) public {

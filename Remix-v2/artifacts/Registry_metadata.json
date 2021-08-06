@@ -11,6 +11,75 @@
 				"type": "constructor"
 			},
 			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "assetname",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "cost",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32[]",
+						"name": "dependencies",
+						"type": "bytes32[]"
+					}
+				],
+				"name": "createdBluprint",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "blueprintOwner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "earnings",
+						"type": "uint256"
+					}
+				],
+				"name": "showEarnings",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "nftOwner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "holdings",
+						"type": "uint256"
+					}
+				],
+				"name": "showHoldings",
+				"type": "event"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "bytes32[]",
@@ -41,7 +110,7 @@
 						"type": "bool"
 					}
 				],
-				"stateMutability": "view",
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -98,15 +167,15 @@
 				],
 				"name": "createBlueprint",
 				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
 				"inputs": [
 					{
-						"internalType": "bytes",
+						"internalType": "string",
 						"name": "name",
-						"type": "bytes"
+						"type": "string"
 					}
 				],
 				"name": "getNamehash",
@@ -278,6 +347,19 @@
 						"internalType": "string",
 						"name": "assetURI",
 						"type": "string"
+					}
+				],
+				"name": "showQuantity",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "assetURI",
+						"type": "string"
 					},
 					{
 						"internalType": "uint256",
@@ -367,11 +449,11 @@
 			]
 		},
 		"Remix-v2/Registry.sol": {
-			"keccak256": "0xf9c9c41c214cc20801f6b6502121421528c9ced71029dbd14c5baf5dd456e836",
+			"keccak256": "0x52af3f32dc7d395c5c2d0c0f4507f792300676813f794272e3d2c802ec200091",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://73aa0417aae99f4b938a792aabd52579fdf49013376ce2aac624eb7bce90db68",
-				"dweb:/ipfs/QmWmQuBm1gKioCSmJxC8aDr1S8reeyiUbSWaRhUkyPwn3A"
+				"bzz-raw://9b9f4c88f3e9c141c5deb9f8cfbc50b588f45d15c9d7d2e00e17b1195ba7503b",
+				"dweb:/ipfs/QmXrQQ77yRdAZVvyAZzwnBPMCA8r8wigjPwBiiNVszMN5G"
 			]
 		}
 	},
