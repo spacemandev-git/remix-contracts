@@ -10,10 +10,10 @@ contract Registry {
         string id;
         address nftcontract;
     }
-    struct SystemRecord {
+    struct ThemeRecord {
         address publisher;
     }
-    struct ThemeRecord {
+    struct SystemRecord {
         address locationNFTContract;
         address questNFTContract;
         address regionsNFTContract;
@@ -21,16 +21,51 @@ contract Registry {
         address itemsNFTContract;
         address loreNFTContract;
     }
+    struct BlueprintData {
+        string assetname;
+        string imageURL;
+        string description;
+        uint cost;
+        bytes32[] dependencies;
+        uint[] quantities;
+    }
+    /*
+    struct TokenQuantity {
+        bytes32 tokenHash;
+        uint quantity;
+    }
+    */
+    struct NFTOwner {
+        mapping(bytes32 => uint) quantity;
+    }
+    struct NFTData {
+        string assetname;
+        string imageURL;
+        string description;
+    }
     
     mapping(bytes32 => string) namehashToType;
     mapping(bytes32 => NodeRecord) nodeRecords;
     mapping(bytes32 => SystemRecord) systemRecords;
     mapping(bytes32 => ThemeRecord) themeRecords;
+    mapping(address => NFTOwner) nftOwners;
+    mapping(bytes32 => NFTData) nftData;
+    mapping(bytes32 => address) blueprintOwners;
+    mapping(bytes32 => BlueprintData) blueprintData;
+    // mapping(bytes32 => TokenQuantity) 
+    // uint [] tokenQuantity;
     
     
     constructor() {}
 
+    /*
     function getNamehash(bytes memory name) public pure returns (bytes32) {
+        return name.namehash();
+        nftname.nft-type.theme.universe.system.rem
+    }
+    */
+    
+    function getNamehash(bytes memory name) public view returns (bytes32) {
         return name.namehash();
     }
     
@@ -58,7 +93,7 @@ contract Registry {
     
     function resolveThemeNamehash(string memory name) public view returns (ThemeRecord memory) {
         bytes32 nh = bytes(name).namehash();
-        return themeRecords[nh];  
+        return themeRecords[nh];
     }
     
     function resolveNodeNamehash(string memory name) public view returns (NodeRecord memory) {
@@ -77,11 +112,57 @@ contract Registry {
       bytes32 nh = bytes(name).namehash();
       themeRecords[nh].publisher = pubAddress;
     }
-
+    
+    /*
     function resolveNamehashType(string memory name) public returns (string memory) {
       return namehashToType[bytes(name).namehash()];
     }
-
-
+    */
+    
+    function createBlueprint(string memory assetURI, string memory assetname, string memory imageURL, string memory description, uint cost) public {
+        bytes32 blueprintTokenId = bytes(assetURI).namehash();
+        require(blueprintOwners[blueprintTokenId] != address(0));
+        blueprintOwners[blueprintTokenId] = msg.sender;
+        bytes32[] memory tokenHashes;
+        uint[] memory quantities; 
+        blueprintData[blueprintTokenId] = BlueprintData({assetname: assetname, imageURL: imageURL, description: description, cost: cost, dependencies: tokenHashes, quantities: quantities});
+    }
+    
+    function updateBlueprint(string memory assetURI, uint quantity) public {
+        bytes32 assetURInh = bytes(assetURI).namehash();
+        require(msg.sender == blueprintOwners[assetURInh]);
+        blueprintData[assetURInh].dependencies.push(assetURInh);
+        blueprintData[assetURInh].quantities.push(quantity);
+    }
+    
+    function checkDependency(bytes32[] memory dependencies, uint[] memory quantities, address sender, uint value) public view returns (bool) {
+        uint numDependencies = dependencies.length;
+        uint cost;
+        for (uint i=0; i<numDependencies; i++) {
+            bytes32 assetURI = dependencies[i];
+            uint quantity = quantities[i];
+            if (nftOwners[sender].quantity[assetURI] != quantity) {
+                return false;
+            }
+            cost += blueprintData[assetURI].cost;
+        }
+        if (cost != value) {
+            return false;
+        }
+        return true;
+    }
+    
+    function mint(string memory assetURI) public payable {
+        bytes32 assetURInh = bytes(assetURI).namehash();
+        require(checkDependency(blueprintData[assetURInh].dependencies, blueprintData[assetURInh].quantities, msg.sender, msg.value));
+        nftOwners[msg.sender].quantity[assetURInh] += 1;
+    }
+    /*
+    function transfer(address _to, uint256 _tokenId) public {
+        require(msg.sender == nftOwners[_tokenId]);
+        idToOwner[_tokenId] = _to;
+        emit Transfer(msg.sender, _to, _tokenId);
+    }
+    */
     
 }

@@ -13,6 +13,40 @@
 			{
 				"inputs": [
 					{
+						"internalType": "bytes32[]",
+						"name": "dependencies",
+						"type": "bytes32[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "quantities",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "checkDependency",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "string",
 						"name": "s1",
 						"type": "string"
@@ -37,6 +71,39 @@
 			{
 				"inputs": [
 					{
+						"internalType": "string",
+						"name": "assetURI",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "assetname",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "imageURL",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "cost",
+						"type": "uint256"
+					}
+				],
+				"name": "createBlueprint",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "bytes",
 						"name": "name",
 						"type": "bytes"
@@ -50,7 +117,20 @@
 						"type": "bytes32"
 					}
 				],
-				"stateMutability": "pure",
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "assetURI",
+						"type": "string"
+					}
+				],
+				"name": "mint",
+				"outputs": [],
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -82,25 +162,6 @@
 				"name": "registerTheme",
 				"outputs": [],
 				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "string",
-						"name": "name",
-						"type": "string"
-					}
-				],
-				"name": "resolveNamehashType",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "",
-						"type": "string"
-					}
-				],
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -214,6 +275,24 @@
 			{
 				"inputs": [
 					{
+						"internalType": "string",
+						"name": "assetURI",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "quantity",
+						"type": "uint256"
+					}
+				],
+				"name": "updateBlueprint",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "bytes",
 						"name": "name",
 						"type": "bytes"
@@ -274,25 +353,25 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
 		"Remix-v2/ENSNamehash.sol": {
-			"keccak256": "0x5e1f76c15eae7a14a2245870a8b6a72bca022637fa4d2d1513a16f200481bb6b",
+			"keccak256": "0x47e72a47d3bf4b25994347c556c541bca289c83a80e08bf3c0d28eff82dd4205",
 			"urls": [
-				"bzz-raw://4d9d1ea892b46d91ad0f7fca02829a299034c2cdee9dedcfc1d173e4b42cb45f",
-				"dweb:/ipfs/Qmb6UDeuK8uFr62UC3JEGPU3cwda7pVRQiij66cFHvsL8j"
+				"bzz-raw://ecc730bab8818f3fd15cd0b5a8403043d0218a9dc662923533d9ecefa30d20d9",
+				"dweb:/ipfs/QmVhzJuSo7BatHhdQmxnVhxxLqzMzp4yspW7pqnuhWGuBx"
 			]
 		},
 		"Remix-v2/Registry.sol": {
-			"keccak256": "0x0680c345cb36925493f7c808f1fbc88d3fa9cf03d3f371638382e9f1f8c4ddc0",
+			"keccak256": "0xf9c9c41c214cc20801f6b6502121421528c9ced71029dbd14c5baf5dd456e836",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://4cab044460ff51794cd45edb7e2da9095b029be8416247354aefc87fe33e66d9",
-				"dweb:/ipfs/QmPuP7665wVYGCZV9FSL3PEDQXTSYo6QrccMSFVifVNnzv"
+				"bzz-raw://73aa0417aae99f4b938a792aabd52579fdf49013376ce2aac624eb7bce90db68",
+				"dweb:/ipfs/QmWmQuBm1gKioCSmJxC8aDr1S8reeyiUbSWaRhUkyPwn3A"
 			]
 		}
 	},
